@@ -8,6 +8,8 @@ const Container = styled.div`
   justify-content: space-between;
   border: 1px solid silver;
   margin-bottom: 20px;
+  padding: 30px;
+  height: 300px;
 `;
 const Image = styled.img`
   width: 200px;
@@ -65,11 +67,11 @@ const CartItem = ({ item }) => {
       </Details>
       <PriceDetail>
         <ProductAmountContainer>
-          <Counter onClick={dispatch(decrease(item.id))}>-</Counter>
+          <Counter onClick={() => dispatch(decrease(item.id))}>-</Counter>
           <ProductAmount>{item.amount}</ProductAmount>
-          <Counter onClick={dispatch(increase(item.id))}>+</Counter>
+          <Counter onClick={() => dispatch(increase(item.id))}>+</Counter>
         </ProductAmountContainer>
-        <ProductPrice>{item.price}</ProductPrice>
+        <ProductPrice>${(item.price * item.amount).toFixed(2)}</ProductPrice>
       </PriceDetail>
     </Container>
   );

@@ -6,7 +6,7 @@ const Container = styled.div`
 `;
 const Left = styled.div`
   flex: 1;
-  padding: 20px;
+  padding: 30px;
 `;
 const Logo = styled.h1`
   margin-bottom: 20px;
@@ -16,12 +16,13 @@ const Description = styled.p`
 `;
 const SocialContainer = styled.div`
   display: flex;
+  font-size: 40px;
 `;
 const SocialIcon = styled.div`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: bisque;
+  cursor: pointer;
   margin-right: 15px;
   display: flex;
   justify-content: center;
@@ -29,7 +30,7 @@ const SocialIcon = styled.div`
 `;
 const Center = styled.div`
   flex: 1;
-  padding: 20px;
+  padding: 30px;
 `;
 const Title = styled.h3`
   margin-bottom: 30px;
@@ -44,7 +45,7 @@ const ListItem = styled.li`
 `;
 const Right = styled.div`
   flex: 1;
-  padding: 20px;
+  padding: 30px;
 `;
 const ContactItem = styled.div`
   margin-bottom: 20px;
@@ -63,10 +64,18 @@ const Footer = () => {
           consectetur adipisicing elit.
         </Description>
         <SocialContainer>
-          <SocialIcon>FB</SocialIcon>
-          <SocialIcon>Inst</SocialIcon>
-          <SocialIcon>TW</SocialIcon>
-          <SocialIcon>TG</SocialIcon>
+          <SocialIcon>
+            <i className="bx bxl-facebook-circle"></i>
+          </SocialIcon>
+          <SocialIcon>
+            <i className="bx bxl-instagram"></i>
+          </SocialIcon>
+          <SocialIcon>
+            <i className="bx bxl-twitter"></i>
+          </SocialIcon>
+          <SocialIcon>
+            <i className="bx bxl-telegram"></i>
+          </SocialIcon>
         </SocialContainer>
       </Left>
       <Center>

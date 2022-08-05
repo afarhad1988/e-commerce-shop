@@ -21,6 +21,10 @@ const cartSlice = createSlice({
         state.cart = [...state.cart, action.payload];
       }
       state.totalAmount = state.totalAmount + 1;
+      // state.totalPrice = state.cart.reduce(
+      //   (acc, item) => acc + item.price * item.amount,
+      //   0
+      // );
     },
 
     increase: (state, action) => {
@@ -43,8 +47,8 @@ const cartSlice = createSlice({
       state.totalAmount = state.totalAmount - item.amount;
     },
     calculateTotal: (state, action) => {
-      state.totalAmount = state.cart.reduce(
-        (acc, item) => acc + item.price + item.amount,
+      state.totalPrice = state.cart.reduce(
+        (acc, item) => acc + item.price * item.amount,
         0
       );
     },
