@@ -72,9 +72,9 @@ const Header = () => {
         </SearchContainer>
       </Left>
       <Menu>
-        <MenuItem>Register</MenuItem>
-        <MenuItem>Sign in</MenuItem>
-        <MenuItem onClick={() => navigate("cart")}>
+        <MenuItem onClick={() => navigate("/register")}>Register</MenuItem>
+        <MenuItem onClick={() => navigate("/login")}>Sign in</MenuItem>
+        <MenuItem onClick={() => navigate("/cart")}>
           <CartIcon>
             <Badge>{totalAmount}</Badge>
             <i className="bx bx-cart"></i>
