@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toast, ToastContainer } from "react-toastify";
 import * as Yup from "yup";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { ButtonTemplate } from "../../mixin";
+import { signinUser } from "../../redux/slices/userSlice";
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -38,6 +43,9 @@ const Button = styled.button`
   ${ButtonTemplate}
 `;
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigation = useNavigate();
+  const { isError, isSuccess, errorMessage } = useSelector((s) => s.user);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -50,10 +58,19 @@ const Login = () => {
         .required("Password is required"),
     }),
     onSubmit: (values) => {
-      // alert(JSON.stringify(values, null, 2));
-      console.log(values);
+      delete values.passwordConfirmation;
+      dispatch(signinUser(values));
     },
   });
+  useEffect(() => {
+    if (isError) {
+      toast.error(errorMessage);
+    }
+    if (isSuccess) {
+      navigation("/");
+    }
+  }, [isSuccess, isError, errorMessage, dispatch, navigation]);
+
   return (
     <>
       <Header />
@@ -89,6 +106,7 @@ const Login = () => {
         </Wrapper>
       </Container>
       <Footer />
+      <ToastContainer />
     </>
   );
 };

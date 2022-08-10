@@ -9,11 +9,13 @@ import { getCatalogs } from "./redux/slices/catalogSlice";
 import { useDispatch } from "react-redux";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import { checkUserAuth } from "./redux/slices/userSlice";
 
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCatalogs(data));
+    dispatch(checkUserAuth());
   }, [dispatch]);
 
   return (

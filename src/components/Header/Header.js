@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
+import { logout } from "../../redux/slices/userSlice";
 const Container = styled.div`
   padding: 30px;
   display: flex;
@@ -60,6 +61,8 @@ const Badge = styled.div`
 
 const Header = () => {
   const { totalAmount } = useSelector((s) => s.cart);
+  const { isSuccess, user } = useSelector((s) => s.user);
+  const dispatch = useDispatch();
   let navigate = useNavigate();
   return (
     <Container>
@@ -72,8 +75,18 @@ const Header = () => {
         </SearchContainer>
       </Left>
       <Menu>
-        <MenuItem onClick={() => navigate("/register")}>Register</MenuItem>
-        <MenuItem onClick={() => navigate("/login")}>Sign in</MenuItem>
+        {isSuccess ? (
+          <>
+            <MenuItem>Добро пожаловать, {user.email}</MenuItem>
+            <MenuItem onClick={() => dispatch(logout())}>Logout</MenuItem>
+          </>
+        ) : (
+          <>
+            <MenuItem onClick={() => navigate("/register")}>Register</MenuItem>
+            <MenuItem onClick={() => navigate("/login")}>Sign in</MenuItem>
+          </>
+        )}
+
         <MenuItem onClick={() => navigate("/cart")}>
           <CartIcon>
             <Badge>{totalAmount}</Badge>

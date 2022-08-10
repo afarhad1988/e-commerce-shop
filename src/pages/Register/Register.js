@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useFormik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
-import axios from "axios";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { ButtonTemplate } from "../../mixin";
+import { signupUser } from "../../redux/slices/userSlice";
+import { useNavigate } from "react-router-dom";
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -39,6 +44,9 @@ const Button = styled.button`
   ${ButtonTemplate}
 `;
 const Register = () => {
+  const dispatch = useDispatch();
+  const navigation = useNavigate();
+  const { isError, isSuccess, errorMessage } = useSelector((s) => s.user);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -57,12 +65,17 @@ const Register = () => {
     }),
     onSubmit: (values) => {
       delete values.passwordConfirmation;
-      axios
-        .post("/api/auth/register", values)
-        .then(({ data }) => console.log("successfully", data))
-        .catch((e) => console.log("failed", e.message));
+      dispatch(signupUser(values));
     },
   });
+  useEffect(() => {
+    if (isSuccess) {
+      navigation("/");
+    }
+    if (isError) {
+      toast.error(errorMessage);
+    }
+  }, [isSuccess, isError, errorMessage, dispatch, navigation]);
   return (
     <>
       <Header />
@@ -104,12 +117,12 @@ const Register = () => {
                 <div>{formik.errors.passwordConfirmation}</div>
               ) : null}
             </InputGroup>
-
             <Button type="submit">Register</Button>
           </Form>
         </Wrapper>
       </Container>
       <Footer />
+      <ToastContainer />
     </>
   );
 };
