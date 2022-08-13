@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
 import * as Yup from "yup";
-
 import { ButtonTemplate } from "../../mixin";
 import { signinUser } from "../../redux/slices/userSlice";
 import Layout from "../../components/Layout";
@@ -96,7 +95,6 @@ const Login = () => {
           <Button type="submit">Sign In</Button>
         </Form>
       </Wrapper>
-
       <ToastContainer />
     </Layout>
   );

@@ -74,7 +74,6 @@ const Register = () => {
       <Wrapper>
         <Title>Create an account</Title>
         <Form onSubmit={formik.handleSubmit}>
-          {/*<Input placeholder={"email"} id={"email"} type={'email'} formik={formik} />*/}
           <InputGroup>
             <Input
               placeholder="Email"
@@ -111,8 +110,9 @@ const Register = () => {
           </InputGroup>
           <Button type="submit">Register</Button>
         </Form>
-        <ToastContainer />
       </Wrapper>
+
+      <ToastContainer />
     </Layout>
   );
 };
