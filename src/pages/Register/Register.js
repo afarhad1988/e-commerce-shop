@@ -5,8 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
 import { ButtonTemplate } from "../../mixin";
 import { signupUser } from "../../redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
