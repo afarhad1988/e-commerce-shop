@@ -10,8 +10,6 @@ import { useDispatch } from "react-redux";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import { checkUserAuth } from "./redux/slices/userSlice";
-import Profile from "./pages/Profile";
-import RequireAuth from "./components/RequireAuth";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -27,14 +25,6 @@ const App = () => {
         <Route path="/products" element={<Products />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/register" element={<Register />} />
-        <Route
-          path="/profile"
-          element={
-            <RequireAuth>
-              <Profile />
-            </RequireAuth>
-          }
-        />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

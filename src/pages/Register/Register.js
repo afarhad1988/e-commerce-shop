@@ -5,14 +5,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import { ButtonTemplate } from "../../mixin";
 import { signupUser } from "../../redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
-import Layout from "../../components/Layout";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
 
 const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #fbf0f4;
   padding: 50px 0;
 `;
@@ -20,7 +22,6 @@ const Wrapper = styled.div`
   width: 40%;
   background-color: #2fab84;
   padding: 20px;
-  margin: 0 auto;
 `;
 const Title = styled.div`
   font-size: 24px;
@@ -120,8 +121,8 @@ const Register = () => {
           </Form>
         </Wrapper>
       </Container>
-      <ToastContainer />
       <Footer />
+      <ToastContainer />
     </>
   );
 };
