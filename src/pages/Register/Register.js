@@ -10,6 +10,7 @@ import Footer from "../../components/Footer";
 import { ButtonTemplate } from "../../mixin";
 import { signupUser } from "../../redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
+import Input from "../../components/Input";
 
 const Container = styled.div`
   display: flex;
@@ -30,14 +31,7 @@ const Title = styled.div`
   text-align: center;
 `;
 const Form = styled.form``;
-const Input = styled.input`
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-`;
-const InputGroup = styled.div`
-  margin-bottom: 20px;
-`;
+
 const Button = styled.button`
   width: 100%;
   border-radius: 8px;
@@ -83,40 +77,25 @@ const Register = () => {
         <Wrapper>
           <Title>Create an account</Title>
           <Form onSubmit={formik.handleSubmit}>
-            <InputGroup>
-              <Input
-                placeholder="Email"
-                type="email"
-                id="email"
-                {...formik.getFieldProps("email")}
-              />
-              {formik.touched.email && formik.errors.email ? (
-                <div>{formik.errors.email}</div>
-              ) : null}
-            </InputGroup>
-            <InputGroup>
-              <Input
-                placeholder="Password"
-                type="text"
-                id="password"
-                {...formik.getFieldProps("password")}
-              />
-              {formik.touched.password && formik.errors.password ? (
-                <div>{formik.errors.password}</div>
-              ) : null}
-            </InputGroup>
-            <InputGroup>
-              <Input
-                placeholder="Confirm password"
-                type="text"
-                id="passwordConfirmation"
-                {...formik.getFieldProps("passwordConfirmation")}
-              />
-              {formik.touched.passwordConfirmation &&
-              formik.errors.passwordConfirmation ? (
-                <div>{formik.errors.passwordConfirmation}</div>
-              ) : null}
-            </InputGroup>
+            <Input
+              formik={formik}
+              placeholder="Email"
+              type="email"
+              id="email"
+            />
+            <Input
+              formik={formik}
+              placeholder="Password"
+              type="text"
+              id="password"
+            />
+            <Input
+              formik={formik}
+              placeholder="Confirm password"
+              type="text"
+              id="passwordConfirmation"
+            />
+
             <Button type="submit">Register</Button>
           </Form>
         </Wrapper>

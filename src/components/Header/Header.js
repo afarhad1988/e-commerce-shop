@@ -78,7 +78,7 @@ const Header = () => {
         {isSuccess ? (
           <>
             <MenuItem>Добро пожаловать, {user.email}</MenuItem>
-            {/*<MenuItem onClick={() => navigate("/profile")}>Profile</MenuItem>*/}
+            <MenuItem onClick={() => navigate("/profile")}>Profile</MenuItem>
             <MenuItem onClick={() => dispatch(logout())}>Logout</MenuItem>
           </>
         ) : (

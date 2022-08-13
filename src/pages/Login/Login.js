@@ -9,6 +9,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { ButtonTemplate } from "../../mixin";
 import { signinUser } from "../../redux/slices/userSlice";
+import Input from "../../components/Input";
 
 const Container = styled.div`
   display: flex;
@@ -29,14 +30,7 @@ const Title = styled.div`
   text-align: center;
 `;
 const Form = styled.form``;
-const Input = styled.input`
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-`;
-const InputGroup = styled.div`
-  margin-bottom: 20px;
-`;
+
 const Button = styled.button`
   width: 100%;
   border-radius: 8px;
@@ -78,28 +72,18 @@ const Login = () => {
         <Wrapper>
           <Title>Sign In</Title>
           <Form onSubmit={formik.handleSubmit}>
-            <InputGroup>
-              <Input
-                placeholder="Email"
-                type="email"
-                id="email"
-                {...formik.getFieldProps("email")}
-              />
-              {formik.touched.email && formik.errors.email ? (
-                <div>{formik.errors.email}</div>
-              ) : null}
-            </InputGroup>
-            <InputGroup>
-              <Input
-                placeholder="Password"
-                type="text"
-                id="password"
-                {...formik.getFieldProps("password")}
-              />
-              {formik.touched.password && formik.errors.password ? (
-                <div>{formik.errors.password}</div>
-              ) : null}
-            </InputGroup>
+            <Input
+              formik={formik}
+              placeholder="Email"
+              type="email"
+              id="email"
+            />
+            <Input
+              formik={formik}
+              placeholder="Password"
+              type="text"
+              id="password"
+            />
 
             <Button type="submit">Sign In</Button>
           </Form>

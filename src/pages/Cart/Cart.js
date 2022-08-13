@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { ButtonTemplate } from "../../mixin";
 import { calculateTotal } from "../../redux/slices/cartSlice";
 import Summary from "../../components/Summary";
+import Layout from "../../components/Layout";
 
 const Cart = () => {
   const Container = styled.div``;
@@ -39,9 +40,7 @@ const Cart = () => {
     dispatch(calculateTotal());
   }, [dispatch, totalAmount]);
   return (
-    <div>
-      <Announcement />
-      <Header />
+    <Layout>
       <Container>
         <Wrapper>
           <Top>
@@ -68,8 +67,7 @@ const Cart = () => {
           </Bottom>
         </Wrapper>
       </Container>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 
