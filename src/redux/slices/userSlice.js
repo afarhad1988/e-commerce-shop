@@ -47,6 +47,8 @@ export const userSlice = createSlice({
       state.user = {};
       state.isSuccess = false;
       state.token = "";
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
     },
   },
   extraReducers: {

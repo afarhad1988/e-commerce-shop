@@ -5,22 +5,16 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
 import * as Yup from "yup";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
 import { ButtonTemplate } from "../../mixin";
 import { signinUser } from "../../redux/slices/userSlice";
+import Layout from "../../components/Layout";
+import Input from "../../components/Input";
 
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #fbf0f4;
-  padding: 50px 0;
-`;
 const Wrapper = styled.div`
   width: 40%;
   background-color: #2fab84;
   padding: 20px;
+  margin: 0 auto;
 `;
 const Title = styled.div`
   font-size: 24px;
@@ -29,14 +23,7 @@ const Title = styled.div`
   text-align: center;
 `;
 const Form = styled.form``;
-const Input = styled.input`
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-`;
-const InputGroup = styled.div`
-  margin-bottom: 20px;
-`;
+
 const Button = styled.button`
   width: 100%;
   border-radius: 8px;
@@ -72,42 +59,29 @@ const Login = () => {
   }, [isSuccess, isError, errorMessage, dispatch, navigation]);
 
   return (
-    <>
-      <Header />
-      <Container>
-        <Wrapper>
-          <Title>Sign In</Title>
-          <Form onSubmit={formik.handleSubmit}>
-            <InputGroup>
-              <Input
-                placeholder="Email"
-                type="email"
-                id="email"
-                {...formik.getFieldProps("email")}
-              />
-              {formik.touched.email && formik.errors.email ? (
-                <div>{formik.errors.email}</div>
-              ) : null}
-            </InputGroup>
-            <InputGroup>
-              <Input
-                placeholder="Password"
-                type="text"
-                id="password"
-                {...formik.getFieldProps("password")}
-              />
-              {formik.touched.password && formik.errors.password ? (
-                <div>{formik.errors.password}</div>
-              ) : null}
-            </InputGroup>
+    <Layout>
+      <Wrapper>
+        <Title>Sign In</Title>
+        <Form onSubmit={formik.handleSubmit}>
+          <Input
+            placeholder={"Email"}
+            id={"email"}
+            type={"email"}
+            formik={formik}
+          />
+          <Input
+            placeholder={"Password"}
+            id={"password"}
+            type={"text"}
+            formik={formik}
+          />
 
-            <Button type="submit">Sign In</Button>
-          </Form>
-        </Wrapper>
-      </Container>
-      <Footer />
+          <Button type="submit">Sign In</Button>
+        </Form>
+      </Wrapper>
+
       <ToastContainer />
-    </>
+    </Layout>
   );
 };
 
