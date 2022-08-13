@@ -10,11 +10,9 @@ import Footer from "../../components/Footer";
 import { ButtonTemplate } from "../../mixin";
 import { signupUser } from "../../redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
+import Layout from "../../components/Layout";
 
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background: #fbf0f4;
   padding: 50px 0;
 `;
@@ -22,6 +20,7 @@ const Wrapper = styled.div`
   width: 40%;
   background-color: #2fab84;
   padding: 20px;
+  margin: 0 auto;
 `;
 const Title = styled.div`
   font-size: 24px;
@@ -77,8 +76,7 @@ const Register = () => {
     }
   }, [isSuccess, isError, errorMessage, dispatch, navigation]);
   return (
-    <>
-      <Header />
+    <Layout>
       <Container>
         <Wrapper>
           <Title>Create an account</Title>
@@ -121,9 +119,8 @@ const Register = () => {
           </Form>
         </Wrapper>
       </Container>
-      <Footer />
       <ToastContainer />
-    </>
+    </Layout>
   );
 };
 

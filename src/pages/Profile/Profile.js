@@ -2,9 +2,11 @@ import React from "react";
 import Layout from "../../components/Layout";
 import img from "../../assign/image/profile.png";
 import styled from "styled-components";
-const Wrapper = styled.div`
-  padding: 30px;
+const Container = styled.div`
+  background: #fbf0f4;
+  padding: 50px 0;
 `;
+const Wrapper = styled.div``;
 const Title = styled.h2`
   text-align: center;
   margin-bottom: 40px;
@@ -30,21 +32,23 @@ const Profile = () => {
   return (
     <>
       <Layout>
-        <Wrapper>
-          <Title>Профиль Пользователя</Title>
-          <ProfileAccount>
-            <Left>
-              <Img src={img} alt="profile" />
-            </Left>
-            <Right>
-              <FirstName>Имя:</FirstName>
-              <LastName>Фамилия:</LastName>
-              <Birthday>День рождение:</Birthday>
-              <Email>Электронная почта:</Email>
-              <Telephone>Телефонный номер:</Telephone>
-            </Right>
-          </ProfileAccount>
-        </Wrapper>
+        <Container>
+          <Wrapper>
+            <Title>Профиль Пользователя</Title>
+            <ProfileAccount>
+              <Left>
+                <Img src={img} alt="profile" />
+              </Left>
+              <Right>
+                <FirstName>Имя:</FirstName>
+                <LastName>Фамилия:</LastName>
+                <Birthday>День рождение:</Birthday>
+                <Email>Электронная почта:</Email>
+                <Telephone>Телефонный номер:</Telephone>
+              </Right>
+            </ProfileAccount>
+          </Wrapper>
+        </Container>
       </Layout>
     </>
   );

@@ -9,6 +9,9 @@ import Summary from "../../components/Summary";
 import Layout from "../../components/Layout";
 
 const Cart = () => {
+  const Container = styled.div`
+    margin-bottom: 80px;
+  `;
   const Wrapper = styled.div`
     padding: 0 30px;
   `;
@@ -39,30 +42,32 @@ const Cart = () => {
   }, [dispatch, totalAmount]);
   return (
     <Layout>
-      <Wrapper>
-        <Top>
-          <TopButton onClick={() => navigate("/")}>
-            Продолжить покупки
-          </TopButton>
-          <Title>Ваша корзина</Title>
-        </Top>
-        <Bottom>
-          <Info>
-            {cart.length ? (
-              cart.map((item) => <CartItem key={item.id} item={item} />)
-            ) : (
-              <CardEmpty>
-                Корзина пуста
-                <span>
-                  {" "}
-                  <i className="bx bx-cart-download"></i>
-                </span>
-              </CardEmpty>
-            )}
-          </Info>
-          {cart.length ? <Summary /> : ""}
-        </Bottom>
-      </Wrapper>
+      <Container>
+        <Wrapper>
+          <Top>
+            <TopButton onClick={() => navigate("/")}>
+              Продолжить покупки
+            </TopButton>
+            <Title>Ваша корзина</Title>
+          </Top>
+          <Bottom>
+            <Info>
+              {cart.length ? (
+                cart.map((item) => <CartItem key={item.id} item={item} />)
+              ) : (
+                <CardEmpty>
+                  Корзина пуста
+                  <span>
+                    {" "}
+                    <i className="bx bx-cart-download"></i>
+                  </span>
+                </CardEmpty>
+              )}
+            </Info>
+            {cart.length ? <Summary /> : ""}
+          </Bottom>
+        </Wrapper>
+      </Container>
     </Layout>
   );
 };
