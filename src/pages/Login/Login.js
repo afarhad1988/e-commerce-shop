@@ -63,18 +63,8 @@ const Login = () => {
       <Wrapper>
         <Title>Sign In</Title>
         <Form onSubmit={formik.handleSubmit}>
-          <Input
-            placeholder={"Email"}
-            id={"email"}
-            type={"email"}
-            formik={formik}
-          />
-          <Input
-            placeholder={"Password"}
-            id={"password"}
-            type={"text"}
-            formik={formik}
-          />
+          <Input placeholder={"Email"} id={"email"} formik={formik} />
+          <Input placeholder={"Password"} id={"password"} formik={formik} />
 
           <Button type="submit">Sign In</Button>
         </Form>
