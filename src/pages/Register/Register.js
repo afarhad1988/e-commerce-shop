@@ -9,6 +9,8 @@ import { ButtonTemplate } from "../../mixin";
 import { signupUser } from "../../redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import Layout from "../../components/Layout";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 const Container = styled.div`
   background: #fbf0f4;
@@ -74,7 +76,8 @@ const Register = () => {
     }
   }, [isSuccess, isError, errorMessage, dispatch, navigation]);
   return (
-    <Layout>
+    <>
+      <Header />
       <Container>
         <Wrapper>
           <Title>Create an account</Title>
@@ -118,7 +121,8 @@ const Register = () => {
         </Wrapper>
       </Container>
       <ToastContainer />
-    </Layout>
+      <Footer />
+    </>
   );
 };
 

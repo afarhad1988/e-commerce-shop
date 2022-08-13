@@ -8,6 +8,8 @@ import * as Yup from "yup";
 import { ButtonTemplate } from "../../mixin";
 import { signinUser } from "../../redux/slices/userSlice";
 import Layout from "../../components/Layout";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 const Container = styled.div`
   background: #fbf0f4;
   padding: 50px 0;
@@ -68,7 +70,8 @@ const Login = () => {
   }, [isSuccess, isError, errorMessage, dispatch, navigation]);
 
   return (
-    <Layout>
+    <>
+      <Header />
       <Container>
         <Wrapper>
           <Title>Sign In</Title>
@@ -102,7 +105,8 @@ const Login = () => {
       </Container>
 
       <ToastContainer />
-    </Layout>
+      <Footer />
+    </>
   );
 };
 
