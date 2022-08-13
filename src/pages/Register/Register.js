@@ -9,7 +9,6 @@ import { ButtonTemplate } from "../../mixin";
 import { signupUser } from "../../redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import Layout from "../../components/Layout";
-import Input from "../../components/Input";
 
 const Wrapper = styled.div`
   width: 40%;
@@ -24,6 +23,14 @@ const Title = styled.div`
   text-align: center;
 `;
 const Form = styled.form``;
+const Input = styled.input`
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+`;
+const InputGroup = styled.div`
+  margin-bottom: 20px;
+`;
 const Button = styled.button`
   width: 100%;
   border-radius: 8px;
@@ -67,29 +74,45 @@ const Register = () => {
       <Wrapper>
         <Title>Create an account</Title>
         <Form onSubmit={formik.handleSubmit}>
-          <Input
-            placeholder={"Email"}
-            id={"email"}
-            type={"email"}
-            formik={formik}
-          />
-          <Input
-            placeholder={"Password"}
-            id={"password"}
-            type={"text"}
-            formik={formik}
-          />
-          <Input
-            placeholder={"Confirm password"}
-            id={"passwordConfirmation"}
-            type={"text"}
-            formik={formik}
-          />
+          {/*<Input placeholder={"email"} id={"email"} type={'email'} formik={formik} />*/}
+          <InputGroup>
+            <Input
+              placeholder="Email"
+              type="email"
+              id="email"
+              {...formik.getFieldProps("email")}
+            />
+            {formik.touched.email && formik.errors.email ? (
+              <div>{formik.errors.email}</div>
+            ) : null}
+          </InputGroup>
+          <InputGroup>
+            <Input
+              placeholder="Password"
+              type="text"
+              id="password"
+              {...formik.getFieldProps("password")}
+            />
+            {formik.touched.password && formik.errors.password ? (
+              <div>{formik.errors.password}</div>
+            ) : null}
+          </InputGroup>
+          <InputGroup>
+            <Input
+              placeholder="Confirm password"
+              type="text"
+              id="passwordConfirmation"
+              {...formik.getFieldProps("passwordConfirmation")}
+            />
+            {formik.touched.passwordConfirmation &&
+            formik.errors.passwordConfirmation ? (
+              <div>{formik.errors.passwordConfirmation}</div>
+            ) : null}
+          </InputGroup>
           <Button type="submit">Register</Button>
         </Form>
+        <ToastContainer />
       </Wrapper>
-
-      <ToastContainer />
     </Layout>
   );
 };
