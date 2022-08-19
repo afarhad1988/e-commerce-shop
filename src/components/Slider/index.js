@@ -1,2 +1,3 @@
-import Slider from "./Slider";
-export default Slider;
+import Slider from './Slider'
+
+export default Slider

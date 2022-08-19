@@ -1,24 +1,24 @@
-import React, { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Homepage from "./pages/Homepage";
-import Products from "./pages/Products";
-import Cart from "./pages/Cart";
-import NotFound from "./pages/NotFound";
-import { data } from "./data";
-import { getCatalogs } from "./redux/slices/catalogSlice";
-import { useDispatch } from "react-redux";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import { checkUserAuth } from "./redux/slices/userSlice";
-import Profile from "./pages/Profile";
-import RequireAuth from "./components/RequireAuth";
+import React, { useEffect } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import Homepage from './pages/Homepage'
+import Products from './pages/Products'
+import Cart from './pages/Cart'
+import NotFound from './pages/NotFound'
+import { data } from './data'
+import { getCatalogs } from './redux/slices/catalogSlice'
+import Register from './pages/Register'
+import Login from './pages/Login'
+import { checkUserAuth } from './redux/slices/userSlice'
+import Profile from './pages/Profile'
+import RequireAuth from './components/RequireAuth'
 
 const App = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(getCatalogs(data));
-    dispatch(checkUserAuth());
-  }, [dispatch]);
+    dispatch(getCatalogs(data))
+    dispatch(checkUserAuth())
+  }, [dispatch])
 
   return (
     <BrowserRouter>
@@ -39,7 +39,7 @@ const App = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
-  );
-};
+  )
+}
 
-export default App;
+export default App

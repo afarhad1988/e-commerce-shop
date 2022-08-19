@@ -1,14 +1,14 @@
-import React from "react";
-import Footer from "../Footer";
-import Header from "../Header";
-import styled from "styled-components";
-import Announcement from "../Announcement";
+import React from 'react'
+import styled from 'styled-components'
+import Footer from '../Footer'
+import Header from '../Header'
+import Announcement from '../Announcement'
 
 const Layout = ({ children }) => {
   const Container = styled.div`
     justify-content: center;
     align-items: center;
-  `;
+  `
   return (
     <>
       <Announcement />
@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
       <Container>{children}</Container>
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

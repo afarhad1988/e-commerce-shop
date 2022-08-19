@@ -1,2 +1,3 @@
-import Catalog from "./Catalog";
-export default Catalog;
+import Catalog from './Catalog'
+
+export default Catalog

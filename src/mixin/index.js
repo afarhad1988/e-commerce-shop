@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css } from 'styled-components'
 
 export const ButtonTemplate = () => css`
   background-color: #106c4f;
@@ -6,4 +6,4 @@ export const ButtonTemplate = () => css`
   padding: 10px 20px;
   margin-right: 30px;
   cursor: pointer;
-`;
+`

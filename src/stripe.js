@@ -1,40 +1,40 @@
-import React from "react";
-import StripeCheckout from "react-stripe-checkout";
+import React from 'react'
+import StripeCheckout from 'react-stripe-checkout'
 
-const cors = require("cors");
-const express = require("express");
-const stripe = require("stripe")(
-  "sk_test_51LT7hKDbMjW3C9kYA1xL06aeODxnXSx85eOSBnOm8mOUG5k48mE9OEoneuKA4veHoipX7I5eFRsymzRaQDokUqqn00j3fV8kLa"
-);
-const uuid = require("uuid/v4");
+const cors = require('cors')
+const express = require('express')
+const stripe = require('stripe')(
+  'sk_test_51LT7hKDbMjW3C9kYA1xL06aeODxnXSx85eOSBnOm8mOUG5k48mE9OEoneuKA4veHoipX7I5eFRsymzRaQDokUqqn00j3fV8kLa',
+)
+const uuid = require('uuid/v4')
 
-const app = express();
+const app = express()
 
-app.use(express.json());
-app.use(cors());
+app.use(express.json())
+app.use(cors())
 
-app.get("/", (req, res) => {
-  res.send("Add your Stripe Secret Key to the .require('stripe') statement!");
-});
+app.get('/', (req, res) => {
+  res.send("Add your Stripe Secret Key to the .require('stripe') statement!")
+})
 
-app.post("/checkout", async (req, res) => {
-  console.log("Request:", req.body);
+app.post('/checkout', async (req, res) => {
+  console.log('Request:', req.body)
 
-  let error;
-  let status;
+  let error
+  let status
   try {
-    const { product, token } = req.body;
+    const { product, token } = req.body
 
     const customer = await stripe.customers.create({
       email: token.email,
       source: token.id,
-    });
+    })
 
-    const idempotency_key = uuid();
+    const idempotency_key = uuid()
     const charge = await stripe.charges.create(
       {
         amount: product.price * 100,
-        currency: "usd",
+        currency: 'usd',
         customer: customer.id,
         receipt_email: token.email,
         description: `Purchased the ${product.name}`,
@@ -51,16 +51,16 @@ app.post("/checkout", async (req, res) => {
       },
       {
         idempotency_key,
-      }
-    );
-    console.log("Charge:", { charge });
-    status = "success";
+      },
+    )
+    console.log('Charge:', { charge })
+    status = 'success'
   } catch (error) {
-    console.error("Error:", error);
-    status = "failure";
+    console.error('Error:', error)
+    status = 'failure'
   }
 
-  res.json({ error, status });
-});
+  res.json({ error, status })
+})
 
-app.listen(8080);
+app.listen(8080)

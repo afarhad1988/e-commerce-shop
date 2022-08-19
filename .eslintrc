@@ -1,0 +1,17 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "no-param-reassign": "off",
+    "semi": "off",
+    "react/prop-types": "off",
+    "react/jsx-filename-extension": "off",
+    "import/prefer-default-export": "off",
+    "react/function-component-definition": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-no-bind": "off",
+    "no-shadow": "off",
+    "no-undef": "off",
+    "object-curly-newline": "off",
+    "camelcase": "off"
+  }
+}

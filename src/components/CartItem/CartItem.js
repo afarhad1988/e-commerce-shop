@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { useDispatch } from "react-redux";
-import { decrease, increase } from "../../redux/slices/cartSlice";
+import React from 'react'
+import styled from 'styled-components'
+import { useDispatch } from 'react-redux'
+import { decrease, increase } from '../../redux/slices/cartSlice'
 
 const Container = styled.div`
   display: flex;
@@ -10,29 +10,29 @@ const Container = styled.div`
   margin-bottom: 20px;
   padding: 30px;
   height: 300px;
-`;
+`
 const Image = styled.img`
   width: 200px;
-`;
+`
 const Details = styled.div`
   padding: 20px;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-`;
-const ProductName = styled.span``;
-const ProductId = styled.span``;
+`
+const ProductName = styled.span``
+const ProductId = styled.span``
 const PriceDetail = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-`;
+`
 const ProductAmountContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-`;
+`
 const Counter = styled.div`
   width: 20px;
   height: 20px;
@@ -42,17 +42,17 @@ const Counter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 const ProductPrice = styled.div`
   font-size: 30px;
-`;
+`
 const ProductAmount = styled.div`
   font-size: 24px;
   margin: 5px;
-`;
-const CartItem = ({ item }) => {
-  const dispatch = useDispatch();
+`
+function CartItem({ item }) {
+  const dispatch = useDispatch()
 
   return (
     <Container>
@@ -74,7 +74,7 @@ const CartItem = ({ item }) => {
         <ProductPrice>${(item.price * item.amount).toFixed(2)}</ProductPrice>
       </PriceDetail>
     </Container>
-  );
-};
+  )
+}
 
-export default CartItem;
+export default CartItem
