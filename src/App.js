@@ -13,7 +13,7 @@ import { checkUserAuth } from './redux/slices/userSlice'
 import Profile from './pages/Profile'
 import RequireAuth from './components/RequireAuth'
 
-const App = () => {
+function App() {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getCatalogs(data))

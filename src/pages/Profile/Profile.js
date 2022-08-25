@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import styled from 'styled-components'
-import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import img from '../../assign/image/profile.png'
 import Layout from '../../components/Layout'
+import { getProfile } from '../../redux/slices/userSlice'
 
 const Container = styled.div`
   background: #fbf0f4;
@@ -31,11 +32,12 @@ const LastName = styled.h4``
 const Birthday = styled.h4``
 const Email = styled.h4``
 const Telephone = styled.h4``
-const Span = styled.span`
-  font-weight: 100;
-`
+
 const Profile = () => {
-  const { user } = useSelector((s) => s.user)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getProfile())
+  }, [dispatch])
   return (
     <Layout>
       <Container>
@@ -49,10 +51,7 @@ const Profile = () => {
               <FirstName>Имя:</FirstName>
               <LastName>Фамилия:</LastName>
               <Birthday>День рождение:</Birthday>
-              <Email>
-                Электронная почта: <Span>{user.email}</Span>
-              </Email>
-
+              <Email>Электронная почта:</Email>
               <Telephone>Телефонный номер:</Telephone>
             </Right>
           </ProfileAccount>

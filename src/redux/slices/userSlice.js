@@ -28,8 +28,26 @@ export const signinUser = createAsyncThunk(
     }
   },
 )
+export const getProfile = createAsyncThunk(
+  'user / profile',
+  async (values, thunkAPI) => {
+    try {
+      const { data } = await axiosV1.get('/api/users/profile', {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+        },
+      })
+
+      return data
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data)
+    }
+  },
+)
+
 const initialState = {
   user: JSON.parse(localStorage.getItem('user')) || null,
+  profile: {},
   token: localStorage.getItem('token') || {},
   isFetching: false,
   isSuccess: false,
@@ -79,6 +97,9 @@ export const userSlice = createSlice({
       state.isFetching = false
       state.isError = true
       state.errorMessage = payload.message
+    },
+    [getProfile.fulfilled]: (state, action) => {
+      state.profile = action.payload
     },
   },
 })
